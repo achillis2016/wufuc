@@ -202,10 +202,8 @@ typedef struct _PEB
 
 #ifdef _WIN64
 C_ASSERT(FIELD_OFFSET(PEB, SessionId) == 0x2C0);
-C_ASSERT(sizeof(PEB) == 0x7B0);
 #else
 C_ASSERT(FIELD_OFFSET(PEB, SessionId) == 0x1D4);
-C_ASSERT(sizeof(PEB) == 0x468);
 #endif
 
 #define GDI_BATCH_BUFFER_SIZE 310

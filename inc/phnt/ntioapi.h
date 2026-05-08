@@ -680,7 +680,8 @@ typedef struct _FILE_ID_EXTD_BOTH_DIR_INFORMATION
     WCHAR FileName[1];
 } FILE_ID_EXTD_BOTH_DIR_INFORMATION, *PFILE_ID_EXTD_BOTH_DIR_INFORMATION;
 
-// private
+// FILE_STAT_INFORMATION is provided by newer Windows SDK headers.
+#if !defined(NTDDI_WIN10_RS1)
 typedef struct _FILE_STAT_INFORMATION
 {
     LARGE_INTEGER FileId;
@@ -695,6 +696,7 @@ typedef struct _FILE_STAT_INFORMATION
     ULONG NumberOfLinks;
     ULONG EffectiveAccess;
 } FILE_STAT_INFORMATION, *PFILE_STAT_INFORMATION;
+#endif
 
 // private
 typedef struct _FILE_MEMORY_PARTITION_INFORMATION
