@@ -1,0 +1,57 @@
+wufuc 安装脚本使用说明
+========================
+
+wufuc 用于解除 Windows 7 / 8.1 系统上 Windows Update 的"不支持的硬件"限制，
+使搭载 Intel Kaby Lake、AMD Ryzen 等不受支持处理器的电脑可以继续接收更新。
+
+系统要求
+--------
+  Windows 7 (x64/x86) 或 Windows Server 2008 R2
+  Windows 8.1 (x64/x86) 或 Windows Server 2012 R2
+
+必须以管理员身份运行。
+
+使用方法
+--------
+
+1. 交互式安装（默认）
+   右键点击 install_wufuc.bat，选择"以管理员身份运行"。
+   按照屏幕提示操作即可。
+
+2. 免确认安装
+   在管理员命令行中执行：
+     install_wufuc.bat /UNATTENDED
+
+   不会弹出任何确认提示，安装完成后自动重启。
+   如果不需要重启，加上 /NORESTART：
+     install_wufuc.bat /UNATTENDED /NORESTART
+
+3. 免确认卸载
+     install_wufuc.bat /UNINSTALL /UNATTENDED
+   或直接运行：
+     uninstall_wufuc.bat /UNATTENDED
+
+   同样可加 /NORESTART 跳过重启：
+     uninstall_wufuc.bat /UNATTENDED /NORESTART
+
+参数说明
+--------
+  /UNINSTALL    进入卸载模式
+  /UNATTENDED   跳过所有确认提示，静默执行
+  /NORESTART    完成后不询问是否重启
+
+常见组合
+--------
+  场景                                命令
+  ────────────────────────────────────────────────────────────
+  一键安装，自动重启                  install_wufuc.bat /UNATTENDED
+  一键安装，手动重启                  install_wufuc.bat /UNATTENDED /NORESTART
+  一键卸载，自动重启                  uninstall_wufuc.bat /UNATTENDED
+  一键卸载，不重启                    uninstall_wufuc.bat /UNATTENDED /NORESTART
+
+注意事项
+--------
+  - 安装/卸载后建议重启系统以使更改完全生效。
+  - 如果之前使用过 wufuc 0.1~0.5 版本，脚本会自动通过 SFC 恢复被修改的
+    wuaueng.dll，无需手动处理。
+  - 不要直接从压缩包中运行，请先解压到固定目录（如 C:\Program Files\wufuc）。
